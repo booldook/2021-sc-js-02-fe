@@ -20,8 +20,33 @@
 	 * daily: https://api.openweathermap.org/data/2.5/weather
 	 * 5days: https://api.openweathermap.org/data/2.5/forecast
 	 * test: https://api.openweathermap.org/data/2.5/weather?appid=02efdd64bdc14b279bc91d9247db4722&units=metric&lat=37.555275&lon=126.936924
+	 * 
+	 * JSON: JavaScript Object Notation
+	 * XML: eXtension Markup Language
+	 * 
+	 * xhr.readyState : 1 -> 서버와 연결됨
+	 * xhr.readyState : 2 -> 서버가 요청(request)을 받음
+	 * xhr.readyState : 3 -> 서버가 요청을 처리중
+	 * xhr.readyState : 4 -> 서버가 요청을 응답함
 	 */
+
+	var url = 'https://api.openweathermap.org/data/2.5/weather?appid=02efdd64bdc14b279bc91d9247db4722&units=metric&lat=37.555275&lon=126.936924';
 	
+	// 순수 자바스크립트 통신
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(e) {
+		if(xhr.readyState === 4 && xhr.status === 200) {
+			console.log(  JSON.parse(xhr.responseText)  );
+		}
+		else if(xhr.status >= 300) {
+			console.log(xhr.status);
+		}
+	}
+	xhr.open('GET', url);
+	xhr.send();
+
+	// jQuery
+	$.get(url, function(r) { console.log(r) });
 </script>
 </body>
 </html>
