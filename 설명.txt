@@ -1,0 +1,39 @@
+임덕규
+010-8332-8040
+booldook@gmail.com
+github.com/booldook
+
+선수학습
+- HTML/CSS - 생활코딩 HTML/CSS
+
+Javascript 활용
+- Visual Studio Code(IDE)
+- https://github.com/booldook/2021-sc-app-03-band/blob/master/%EC%84%A4%EB%AA%85/01.extension.md
+- ES5/ES6
+- jQuery Library
+- Webpack/Babel - 로드맵
+- React/Vue - 로드맵
+
+서버란?
+- 프론트엔드(Browser)/백엔드(Server)
+- 서버(Server)/클라이언트(PC)
+
+프로그래밍 언어
+- c 	: 하드웨어 제어용 프로그램(공유기, TV, 자동차...)
+- c++  	: 응용소프트웨어(포토샵, 워드프로세서, 엑셀)
+- c#	: windows서버에서 운용되는 웹사이트 백엔드 구현(20%)
+- Java, PHP, Python, Javascript(Node) : Linux서버에서 운용되는 웹사이트 백엔드 구현
+- Java(Android), kotlin(Android), swift(IOS), Javascript(Adroid/IOS) : 프론트엔드(MobileApp) 개발
+
+Javascript 언어(Language)
+- 변수(객체, 속성), 함수(동작) 
+
+https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk?hl=ko&
+http://asq.kr/xc4QQe
+
+
+
+
+
+
+
