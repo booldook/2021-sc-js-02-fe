@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/base.css">
 	<script src="../js/jquery.min.js"></script>
+	<script src="../js/axios.min.js"></script>
 	<script src="../js/moment.min.js"></script>
 </head>
 <body>
@@ -21,8 +22,9 @@
 	 * 5days: https://api.openweathermap.org/data/2.5/forecast
 	 * test: https://api.openweathermap.org/data/2.5/weather?appid=02efdd64bdc14b279bc91d9247db4722&units=metric&lat=37.555275&lon=126.936924
 	 * 
+	 * AJAX: Asyncronous Javascript And Xml 
 	 * JSON: JavaScript Object Notation
-	 * XML: eXtension Markup Language
+	 * XML : eXtension Markup Language
 	 * 
 	 * xhr.readyState : 1 -> 서버와 연결됨
 	 * xhr.readyState : 2 -> 서버가 요청(request)을 받음
@@ -42,11 +44,32 @@
 			console.log(xhr.status);
 		}
 	}
-	xhr.open('GET', url);
-	xhr.send();
+	// xhr.open('GET', url);
+	// xhr.send();
 
 	// jQuery
-	$.get(url, function(r) { console.log(r) });
+	// $.get(url, function(r) { console.log(r) }); // callback
+	// $.get(url).then(onGet).catch(onError); // Promise ES6
+	function onGet(r) {
+		console.log(r);
+	}
+	
+	function onError(xhr, status, err) {
+		console.log(xhr, status, err);
+	}
+	
+	// axios
+	axios.get(url).then(onGet2).catch(onError2);
+
+	function onGet2(r) {
+		console.log(r);
+	}
+
+	function onError2(err) {
+		console.log(err);
+	}
+
+
 </script>
 </body>
 </html>
