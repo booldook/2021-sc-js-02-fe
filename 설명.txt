@@ -32,6 +32,15 @@ https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfg
 http://asq.kr/xc4QQe
 
 
+Javascript
+1. 변수/함수/제어문/반복문
+2. 내장객체(Window, Math, Date, Navigator, String, Number, Array, Object)
+3. jQuery
+4. 통신-FrontEnd
+5. backend - firebase
+6. FrontEnd 프레임워크
+7. 정리
+
 
 
 
