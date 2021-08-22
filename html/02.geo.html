@@ -1,0 +1,9 @@
+<script>
+	window.navigator.geolocation.getCurrentPosition(onGet, onError);
+	function onGet(r) {
+		console.log(r);
+	}
+	function onError(err) {
+		console.log(err);
+	}
+</script>
