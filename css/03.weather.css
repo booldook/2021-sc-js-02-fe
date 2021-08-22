@@ -1,0 +1,8 @@
+.gnb-wrapper {max-width: 576px; margin: 0 auto; height: 100vh; position: relative; border-left: 1px solid #ddd; border-right: 1px solid #ddd;}
+header, footer {width: 100%; height: 50px; background-color: #333; color: #fff; font-size: 1.25em; position: absolute;}
+.header-wrapper {left: 0; top: 0; display: flex; align-items: center; padding-left: 1em;}
+.footer-wrapper {left: 0; bottom: 0; display: flex; justify-content: center; align-items: center; font-size: .875em; color: #aaa;}
+.wrapper {width: 200%; height: 100%; padding: 50px 0; display: flex;}
+.wrapper > section {width: 100%;}
+.home-wrapper {display: flex; align-items: center; justify-content: center;}
+.weather-wrapper {}
