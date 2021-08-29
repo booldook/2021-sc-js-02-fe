@@ -49,6 +49,29 @@ function toggleSection(page) {
 	}
 }
 
+function getList(v) {
+	var html = '';
+	html += '<li class="list">';
+	html += '	<div class="img-wp">';
+	html += '		<img src="'+icons[0]+v.weather[0].icon+icons[2]+'" alt="icon" class="w100 img">';
+	html += '	</div>';
+	html += '	<div class="info-wp">';
+	html += '		<div class="temps">';
+	html += '			<span class="temp">'+v.main.temp+'</span>℃';
+	html += '			(min: <span class="min">'+v.main.temp_min+'</span>℃ / max: <span class="max">'+v.main.temp_max+'</span>℃)';
+	html += '		</div>';
+	html += '		<div class="infos">';
+	html += '			<span class="main">'+v.weather[0].main+'</span>';
+	html += '			(<span class="desc">'+v.weather[0].description+'</span>)';
+	html += '		</div>';
+	html += '		<div class="dts">';
+	html += '			<span class="dt">'+moment(v.dt*1000).format('M월 D일 H시')+'</span> 예보';
+	html += '		</div>';
+	html += '	</div>';
+	html += '</li>';
+	return html;
+}
+
 /********** event callback **********/
 function onHome() {
 	toggleHeader(false);
@@ -94,6 +117,13 @@ function onGetDaily(r) {
 
 function onGetWeekly(r) {
 	console.log(r.data);
+	var w = $('.weekly-wrap');
+	var v = r.data;
+	w.find('.city').text(v.city.name);
+	w.find('.country').text(v.city.country);
+	for(var i in v.list) {
+		w.find('.list-wp').append(getList(v.list[i]));
+	}
 }
 
 function onGetError(err) {

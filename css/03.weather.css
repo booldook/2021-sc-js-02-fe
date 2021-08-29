@@ -30,13 +30,14 @@ header, footer {width: 100%; height: 50px; background-color: #333; color: #fff; 
 
 .weather-wrapper .weekly-wrap {align-items: stretch;}
 .weekly-wrap .name-wp {height: 50px; margin-bottom: 10px; text-align: center;}
-.weekly-wrap .list-wp {height: calc(100% - 100px); border-top: 2px solid #ccc; border-bottom: 2px solid #ccc;}
+.weekly-wrap .list-wp {height: calc(100% - 100px); border-top: 2px solid #eee; border-bottom: 2px solid #eee;}
 
 .weekly-wrap .city {font-size: 2em;}
 .weekly-wrap .country {font-size: 1.25em;}
 
+.weekly-wrap .list-wp {overflow-y: auto;}
 .weekly-wrap .list-wp .list {display: flex; align-items: center; border-bottom: 1px solid #ddd;}
-.weekly-wrap .list-wp .list .info-wp {flex-grow: 1;}
+.weekly-wrap .list-wp .list .info-wp {flex-grow: 1; padding-left: 1em;}
 
 .weekly-wrap .temps {margin-bottom: .5em;}
 .weekly-wrap .temp {font-size: 1.5em;}
