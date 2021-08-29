@@ -1,0 +1,36 @@
+<script>
+	var axios = {
+		get: function(url, params, cb) {
+			var xhr = new XMLHttpRequest()
+			xhr.onreadystatechange = function(e) {
+				if(xhr.readyState === 4 && xhr.status === 200) {
+					cb(  JSON.parse(xhr.responseText)  );
+				}
+				else if(xhr.status >= 300) {
+					console.log(xhr.status);
+				}
+			}
+			url = url+'?'+'lat='+params.lat+'&lon='+params.lon+'&appid='+params.appid+'&units='+params.units;
+			xhr.open('GET', url);
+			xhr.send();
+		}
+	}
+
+	var url = 'https://api.openweathermap.org/data/2.5/weather';
+	var params = { lat: 37, lon: 127, appid: '02efdd64bdc14b279bc91d9247db4722', units: 'metric' };
+	function onGetDaily(r) {
+		console.log(r);
+	}
+
+	axios.get(url, params, onGetDaily);
+
+
+	function sum(a, b, cb) {
+		var c = a + b;
+		cb(c);
+	}
+
+	sum(10, 20, function(r) {
+		console.log('10 + 20의 합은 ' + r + ' 입니다.');
+	})
+</script>

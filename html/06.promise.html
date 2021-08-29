@@ -1,0 +1,74 @@
+<script>
+	function sum(a, b) {
+		return new Promise(function(resolve, reject) {
+			var c = a + b;
+			if(typeof c === 'number') {
+				setTimeout(function() {
+					resolve(c);
+				}, 1000)
+			}
+			else reject('error 입니다.');
+		})
+	}
+
+	function multi(a) {
+		return new Promise(function(resolve, reject) {
+			var b = a * a;
+			if(typeof b === 'number') {
+				setTimeout(function() {
+					resolve(b);
+				}, 1000)
+			}
+			else reject('error 입니다.');
+		})
+	}
+
+	function hap(a) {
+		return new Promise(function(resolve, reject) {
+			var b = a + a;
+			if(typeof b === 'number') {
+				setTimeout(function() {
+					resolve(b);
+				}, 1000)
+			}
+			else reject('error 입니다.');
+		})
+	}
+
+	var a = 10;
+	var b = 20;
+	var v1;
+	var v2;
+	var v3;
+	//sum(a, b).then(onSuccess).then(onSuccess2).then(onSuccess3).catch(onError);
+	function onSuccess(r) {
+		v1 = r;
+		console.log(a + ' + ' + b + ' = ' + r + ' 입니다.');
+		return multi(r);
+	}
+	function onSuccess2(r) {
+		v2 = r;
+		console.log(v1 + ' * ' + v1 + ' = ' + r + ' 입니다.');
+		return hap(r);
+	}
+	function onSuccess3(r) {
+		console.log(v2 + ' * ' + v2 + ' = ' + r + ' 입니다.');
+	}
+	function onError(err) {
+		console.log(err);
+	}
+
+
+	async function init() {
+		var a = 10;
+		var b = 20;
+		var v1 = await sum(a, b);
+		console.log(a + ' + ' + b + ' = ' + v1 + ' 입니다.');
+		var v2 = await multi(v1);
+		console.log(v1 + ' * ' + v1 + ' = ' + v2 + ' 입니다.');
+		var v3 = await hap(v2);
+		console.log(v2 + ' + ' + v2 + ' = ' + v3 + ' 입니다.');
+		console.log('모든 계산이 완료되었습니다.');
+	}
+	init();
+</script>

@@ -1,0 +1,36 @@
+<script>
+	// 콜백지옥
+	// 가) 10, 20		'10 + 20 = 30 입니다'
+	// 나) 30				'30 * 30 = 900 입니다'
+	// 다) 900 			'900 + 900' = 1800 입니다' 
+	function sum(a, b, cb) {
+		var c = a + b;
+		setTimeout(function() {
+			cb(c);
+		}, 1000)
+	}
+	function multi(a, cb) {
+		var b = a * a;
+		setTimeout(function() {
+			cb(b);
+		}, 1000)
+	}
+	function hap(a, cb) {
+		var b = a + a;
+		setTimeout(function() {
+			cb(b);
+		}, 1000)
+	}
+
+var a = 10;
+var b = 20;
+sum(a, b, function(r) {
+	console.log(a + ' + ' + b + ' = ' + r + ' 입니다.');
+	multi(r, function(r2) {
+		console.log(r + ' * ' + r + ' = ' + r2 + ' 입니다.');
+		hap(r2, function(r3) {
+			console.log(r2 + ' + ' + r2 + ' = ' + r3 + ' 입니다.');
+		})
+	})
+})
+</script>
