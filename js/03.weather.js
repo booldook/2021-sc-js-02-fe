@@ -4,16 +4,19 @@
  * daily: https://api.openweathermap.org/data/2.5/weather
  * 5days: https://api.openweathermap.org/data/2.5/forecast
  * test: https://api.openweathermap.org/data/2.5/weather?appid=02efdd64bdc14b279bc91d9247db4722&units=metric&lat=37.555275&lon=126.936924
+ * icon url: http://openweathermap.org/img/wn/10d@2x.png
  */
 
 /*********** global init ************/
 var lat = 37.555275;
 var lon = 126.936924;
 var units = 'metric';
+var lang = 'kr';
 var appid = '02efdd64bdc14b279bc91d9247db4722';
 var dailyURL = 'https://api.openweathermap.org/data/2.5/weather';
 var weeklyURL = 'https://api.openweathermap.org/data/2.5/forecast';
-var params = { appid: appid, units: units, lat: lat, lon: lon };
+var params = { appid: appid, units: units, lat: lat, lon: lon, lang: lang };
+var icons = ['http://openweathermap.org/img/wn/', '10d', '@2x.png'];
 
 
 /********** function init ***********/
@@ -74,11 +77,23 @@ function onErrorGeo(err) {	// 차단
 }
 
 function onGetDaily(r) {
-	console.log(r);
+	console.log(r.data);
+	var w = $('.daily-wrap');
+	var v = r.data;
+	w.find('.city').text(v.name);
+	w.find('.country').text(v.sys.country);
+	w.find('.dt').text( moment(v.dt*1000).format('M월 D일 H시 m분') );
+	w.find('.icon').attr('src', icons[0] + v.weather[0].icon + icons[2]);
+	w.find('.icon').attr('src', icons[0] + v.weather[0].icon + icons[2]);
+	w.find('.temp').text(v.main.temp);
+	w.find('.min').text(v.main.temp_min);
+	w.find('.max').text(v.main.temp_max);
+	w.find('.main').text(v.weather[0].main);
+	w.find('.desc').text(v.weather[0].description);
 }
 
 function onGetWeekly(r) {
-	console.log(r);
+	console.log(r.data);
 }
 
 function onGetError(err) {
