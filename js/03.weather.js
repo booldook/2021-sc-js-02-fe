@@ -13,6 +13,7 @@ var units = 'metric';
 var appid = '02efdd64bdc14b279bc91d9247db4722';
 var dailyURL = 'https://api.openweathermap.org/data/2.5/weather';
 var weeklyURL = 'https://api.openweathermap.org/data/2.5/forecast';
+var params = { appid: appid, units: units, lat: lat, lon: lon };
 
 
 /********** function init ***********/
@@ -54,22 +55,35 @@ function onHome() {
 function onDaily() {
 	toggleHeader(true);
 	toggleSection('DAILY');
+	axios.get(dailyURL, { params: params }).then(onGetDaily).catch(onGetError);
 }
 
 function onWeekly() {
 	toggleHeader(true);
 	toggleSection('WEEKLY');
+	axios.get(weeklyURL, { params: params }).then(onGetWeekly).catch(onGetError);
 }
 
 function onGetGeo(r) { // 허용
-	lat = r.coords.latitude;
-	lon = r.coords.longitude;
+	params.lat = r.coords.latitude;
+	params.lon = r.coords.longitude;
 }
 
 function onErrorGeo(err) {	// 차단
 	console.log(err);
 }
 
+function onGetDaily(r) {
+	console.log(r);
+}
+
+function onGetWeekly(r) {
+	console.log(r);
+}
+
+function onGetError(err) {
+	console.log(err);
+}
 /************ event init ************/
 $('.bt-prev').click(onHome);
 $('.bt-daily').click(onDaily);
