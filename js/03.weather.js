@@ -7,6 +7,12 @@
  */
 
 /*********** global init ************/
+var lat = 37.555275;
+var lon = 126.936924;
+var units = 'metric';
+var appid = '02efdd64bdc14b279bc91d9247db4722';
+var dailyURL = 'https://api.openweathermap.org/data/2.5/weather';
+var weeklyURL = 'https://api.openweathermap.org/data/2.5/forecast';
 
 
 /********** function init ***********/
@@ -21,28 +27,54 @@ function toggleHeader(isShow) {
 	}
 }
 
+function toggleSection(page) {
+	switch(page) {
+		case 'HOME':
+			$('.wrapper').removeClass('active');
+			break;
+		case 'DAILY':
+			$('.wrapper').addClass('active');
+			$('.daily-wrap').addClass('active');
+			$('.weekly-wrap').removeClass('active');
+			break;
+		case 'WEEKLY':
+			$('.wrapper').addClass('active');
+			$('.daily-wrap').removeClass('active');
+			$('.weekly-wrap').addClass('active');
+			break;
+	}
+}
+
 /********** event callback **********/
 function onHome() {
-	console.log('hi')
-	$('.wrapper').css('transform', 'translateX(0)');
 	toggleHeader(false);
+	toggleSection('HOME');
 }
 
 function onDaily() {
-	$('.wrapper').css('transform', 'translateX(-50%)');
-	$('.daily-wrap').css('display', 'flex');
-	$('.weekly-wrap').css('display', 'none');
 	toggleHeader(true);
+	toggleSection('DAILY');
 }
 
 function onWeekly() {
-	$('.wrapper').css('transform', 'translateX(-50%)');
-	$('.daily-wrap').css('display', 'none');
-	$('.weekly-wrap').css('display', 'flex');
 	toggleHeader(true);
+	toggleSection('WEEKLY');
+}
+
+function onGetGeo(r) { // 허용
+	lat = r.coords.latitude;
+	lon = r.coords.longitude;
+}
+
+function onErrorGeo(err) {	// 차단
+	console.log(err);
 }
 
 /************ event init ************/
 $('.bt-prev').click(onHome);
 $('.bt-daily').click(onDaily);
 $('.bt-weekly').click(onWeekly);
+
+
+/************ start init ************/
+navigator.geolocation.getCurrentPosition(onGetGeo, onErrorGeo);
