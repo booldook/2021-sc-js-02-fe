@@ -1,0 +1,21 @@
+<script>
+// false판정: 0, null, undefined, '', false
+function hap(a, b, cb) {
+	// 해야할일이 1초 걸림
+	var c = a + b;
+	setTimeout(function(){
+		if(typeof c === 'number') cb(null, c);
+		else cb('에러입니다.');
+	}, 1000);
+}
+
+hap(10, 20, onGetData);
+function onGetData(err, r) {
+	if(err) {	// Error
+		console.log(err)
+	}
+	else {	// Success
+		console.log(r);
+	}
+}
+</script>
