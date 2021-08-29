@@ -14,16 +14,38 @@ header, footer {width: 100%; height: 50px; background-color: #333; color: #fff; 
 .weather-wrapper > div {height: 100%; display: none; justify-content: center; align-items: center; flex-direction: column;}
 .weather-wrapper > div.active {display: flex;}
 
-.weather-wrapper .daily-wrap .name-wp {margin-bottom: 1em;}
-.weather-wrapper .daily-wrap .city {font-size: 3em;}
-.weather-wrapper .daily-wrap .country {font-size: 1.5em;}
+.daily-wrap .name-wp {margin-bottom: 1em;}
+.daily-wrap .city {font-size: 3em;}
+.daily-wrap .country {font-size: 1.5em;}
 
-.weather-wrapper .daily-wrap .dt-wp {margin-bottom: 2em;}
-.weather-wrapper .daily-wrap .dt-wp .dt {font-size: 1.125em;}
+.daily-wrap .dt-wp {margin-bottom: 2em;}
+.daily-wrap .dt-wp .dt {font-size: 1.125em;}
 
-.weather-wrapper .daily-wrap .icon-wp {margin-bottom: 2em;}
+.daily-wrap .icon-wp {margin-bottom: 2em;}
 
-.weather-wrapper .daily-wrap .temp-wp {margin-bottom: 1em; font-size: 1.25em; text-align: center;}
-.weather-wrapper .daily-wrap .temp-wp .temp {font-size: 2em; line-height: 1.2;}
+.daily-wrap .temp-wp {margin-bottom: 1em; font-size: 1.25em; text-align: center;}
+.daily-wrap .temp-wp .temp {font-size: 2em; line-height: 1.2;}
 
-.weather-wrapper .daily-wrap .info-wp {font-size: 1.5em;}
+.daily-wrap .info-wp {font-size: 1.5em;}
+
+.weather-wrapper .weekly-wrap {align-items: stretch;}
+.weekly-wrap .name-wp {height: 50px; margin-bottom: 10px; text-align: center;}
+.weekly-wrap .list-wp {height: calc(100% - 100px); border-top: 2px solid #ccc; border-bottom: 2px solid #ccc;}
+
+.weekly-wrap .city {font-size: 2em;}
+.weekly-wrap .country {font-size: 1.25em;}
+
+.weekly-wrap .list-wp .list {display: flex; align-items: center; border-bottom: 1px solid #ddd;}
+.weekly-wrap .list-wp .list .info-wp {flex-grow: 1;}
+
+.weekly-wrap .temps {margin-bottom: .5em;}
+.weekly-wrap .temp {font-size: 1.5em;}
+.weekly-wrap .min {font-size: 1.25em;}
+.weekly-wrap .max {font-size: 1.25em;}
+
+.weekly-wrap .infos {margin-bottom: .5em;}
+.weekly-wrap .main {font-size: 1.5em;}
+.weekly-wrap .desc {font-size: 1.25em;}
+
+.weekly-wrap .dts {color: #777;}
+
