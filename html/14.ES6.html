@@ -1,0 +1,114 @@
+<script>
+/* 
+ES6의 추가된 사항 및 변경된 사항
+1. 변수: var, let, const
+2. 함수선언문 : Arrow Function 추가
+3. spread operator(펼침연산자)
+4. Destructuring assignment(구조분해할당, 구:비구조화할당)
+5. String객체에 추가된 메서드: includes(), startsWith(), endsWith()
+6. Template String
+7. for ~ of
+8. Set, Map
+9. Promise, async/await
+*/
+
+
+for(let i=0; i<10; i++) {
+	// i는 for의 지역변수
+	console.log(i)
+}
+// console.log(i); // 접근이 안된다. scope가 for안에서만 쓰인다.
+
+
+function abc() {
+	var k = 10;
+	console.log(k);
+	// k의 scope는 abc() 안에서만 통용된다(지역변수)
+}
+abc();
+
+let obj = { name: '홍길동' }
+obj = { name: '홍길순' }
+console.log(obj);
+
+// const 는 참조변수(object, array, function)를 선언할 때 사용한다.
+const obj2 = { name: '홍길동' }
+obj2.name = '홍길순'
+obj2.age = 50
+console.log(obj2)
+
+// Arrow function
+// 함수선언문
+function fn(x) {
+	return x * x;
+}
+// 함수표현식ES5
+var fn2 = function(x) {
+	return x * x;
+}
+// 함수표현식ES6
+const fn3 = (x) => {
+	return x * x;
+}
+const fn4 = x => { // 인자가 1개라면 ()를 생략할 수 있다
+	return x * x;
+}
+const fn5 = x => x * x; // 표현식이 리턴값이 있는 한 줄 이라면 {}를 생략 할 수 있다.
+console.log( fn(10) )
+console.log( fn2(10) )
+console.log( fn3(10) )
+console.log( fn4(10) )
+console.log( fn5(10) )
+
+/* 3. 펼침연산자 */
+const arr = ['A', 'B', 'C'];
+console.log(arr[0], arr[1], arr[2]);
+console.log(...arr);
+const arr2 = [...arr];
+console.log(arr == arr2);	// false
+
+const arr3 = [1, 2, 3];
+const hap = (x, y, z) => x + y + z;
+
+console.log( hap(arr3[0], arr3[1], arr3[2]) )
+console.log( hap(...arr3) )
+
+const arr4 = ['A', 'B', 'C'];
+const arr5 = ['a', 'b'];
+// arr4.splice(1, 0, arr5);	// ["A", Array(2), "B", "C"]
+arr4.splice(1, 0, ...arr5);
+console.log(arr4);
+
+const obj3 = { name: '홍길동', age: 25 };
+const obj4 = { ...obj3 }
+
+console.log(obj3, obj4);
+console.log( obj3 == obj4 );
+
+const users = [
+	{ id: 1, username: '홍길동', kor: 46, eng: 75, age: 25 },
+	{ id: 2, username: '홍길순', kor: 86, eng: 55, age: 35 },
+	{ id: 3, username: '홍길만', kor: 76, eng: 35, age: 47 },
+	{ id: 4, username: '홍길룡', kor: 56, eng: 85, age: 37 },
+];
+// const users2 = user.map((v) => { return { ...v } });
+// const users2 = user.map(v => { return { ...v } });
+// const users2 = user.map(v => ({ ...v }));
+const users2 = users.map(v => ({ ...v }));
+console.log(users2);
+console.log(users == users2);
+
+// String Methods
+let str = 'Hello World';
+let islo = str.indexOf('lo') > -1;		// true
+let isloES6 = str.includes('lo');			// true
+console.log(islo, isloES6);
+
+let startHe = str.indexOf('He') === 0;			// true
+let startHeES6 = str.startsWith('He');			// true
+console.log(startHe, startHeES6);
+
+let endld = str.lastIndexOf('rld') + 3 === str.length;
+let endldES6 = str.endsWith('rld');
+console.log(endld, endldES6);
+</script>
