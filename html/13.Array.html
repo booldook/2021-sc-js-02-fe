@@ -1,0 +1,100 @@
+<script src="../js/lodash.min.js"></script>
+<script>
+// concat -> 배열 두개를 합친다: 새로운 배열
+var arr = ['a', 'b', 'c', 'd'];
+var arr2 = ['A', 'B', 'C', 'D'];
+var arr3 = arr.concat(arr2);
+console.log(arr3);
+
+var arr5 = arr.concat([]);  	// deepcopy - 하지만 요소가 객체(배열)Reference type이면 실패.
+var arr6 = _.cloneDeep(arr);  // lodash deepcopy
+
+// join -> 배열을 문자열로 (String.split() 의 반대)
+var file = '모든.내가만든.언제.jpg';
+var fileArr = file.split('.');
+var file2 = fileArr.join(',');
+console.log(file, fileArr, file2);
+
+// toString() -> 배열을 문자열로 만들어라 (arr.join(','))
+var arr = ['A', 'B', 'C', 'D'];
+console.log(arr.toString());
+
+// sort -> 정렬: 원본을 바꾼다.
+var arr = ['B', 'D', 'C', 'A'];
+arr.sort(); // 오름차순 정렬
+console.log(arr);
+
+var arr = [5, 2, 4, 6, 1, 3, 8, 12, 9, 11, 7, 10];
+
+arr.sort();				// [1, 10, 11, 12, 2, 3, 4, 5, 6, 7, 8, 9]
+console.log(arr);
+
+arr.sort(function(a, b) { return a - b });		// 오름차순
+console.log(arr);
+
+arr.sort(function(a, b) { return b - a });		// 내림차순
+console.log(arr);
+
+var users = [
+	{ id: 1, username: '홍길동', kor: 46, eng: 75, age: 25 },
+	{ id: 2, username: '홍길순', kor: 86, eng: 55, age: 35 },
+	{ id: 3, username: '홍길만', kor: 76, eng: 35, age: 47 },
+	{ id: 4, username: '홍길룡', kor: 56, eng: 85, age: 37 },
+]
+
+var kor = _.cloneDeep(users).sort(function(a, b) { return b.kor - a.kor });
+console.log(kor);
+
+
+// 배열의 순환(forEach, filter, map, reduce, every, some, for, for~in, for~of)
+var users = [
+	{ id: 1, username: '홍길동', kor: 46, eng: 75, age: 25 },
+	{ id: 2, username: '홍길순', kor: 86, eng: 55, age: 35 },
+	{ id: 3, username: '홍길만', kor: 76, eng: 35, age: 47 },
+	{ id: 4, username: '홍길룡', kor: 56, eng: 85, age: 37 },
+];
+
+// forEach, filter, map, reduce, every, some : 배열의 메서드
+for(var i=0; i<users.length; i++) {
+	// 문자열.split('') 	-> 모든 문자를 배열로....
+	// Array.from(문자열) -> 유사배열(for문을 돌릴순 있지만 배열의 메서드는 쓸수 없는)을 배열로
+
+	// users[i].username = users[i].username[0] + ' ' + users[i].username.substr(1);
+	// users[i].username = Array.from(users[i].username).join(' ');
+	users[i].username = users[i].username.split('').join(' '); 
+}
+console.log(users);
+
+
+var num = 12345;
+var str = 'Hello World';
+var obj = { name: '홍길동', kor: 95 };
+var chk = true;
+var hi;
+// console.log( Array.from(num), Array.from(str), Array.from(obj) );
+// console.log( str.pop() );
+
+console.log( typeof num );		// "number"
+console.log( typeof str );		// "string"
+console.log( typeof chk );		// "boolean"
+console.log( typeof hi );			// "undefined"
+console.log( typeof obj );		// "object"
+console.log( typeof users ); 	// "object"
+console.log( Array.isArray(str) );		// false
+console.log( Array.isArray(obj) );		// false
+console.log( Array.isArray(users) );	// true
+
+console.log( 123 == '123' );			// true
+console.log( 123 === '123' );			// true
+
+var arr = ['A', 'B', 'C'];
+var arr2 = arr;
+console.log( arr == arr2 );		// true
+console.log( arr === arr2 );	// true
+
+var arr = ['A', 'B', 'C'];
+var arr2 = arr.slice();	// deepcopy
+console.log( arr, arr2 );
+console.log( arr == arr2 );		// false
+console.log( arr === arr2 );	// false
+</script>

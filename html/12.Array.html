@@ -1,3 +1,4 @@
+<script src="../js/lodash.min.js"></script>
 <script>
 // push: arr.push('B'...) 			-> 배열의 맨 뒤에 요소 삽입
 // pop:	arr.pop()								-> 배열의 맨 뒤의 요소를 꺼냄(원본이 변경됨)
@@ -7,15 +8,15 @@
 // slice: 원본이 변경x
 // concat:
 // join:
+// toString:
+// sort:
+// reverse:
 // forEach:
 // map:
 // filter:
 // every:
 // some:
 // reduce:
-// sort:
-// reverse:
-// toString:
 //...
 
 console.log( new Array() )
@@ -71,4 +72,8 @@ console.log(users, users2); */
 var users3 = JSON.parse(JSON.stringify(users));
 users3[1].userid = 'hongkm';
 console.log(users, users3);
+
+var users4 = _.cloneDeep(users);
+users4[1].userid = 'hongkilman';
+console.log(users, users4);
 </script>
