@@ -1,4 +1,8 @@
 <script>
+// length, indexOf(), split(), substring(), substr(), toLowerCase(), toUpperCase(), trim()
+
+console.log( new String() );
+
 var a = 'ABCD'.length;
 console.log(a);
 
@@ -52,4 +56,58 @@ function findCharCount(str, char) {
 }
 
 console.log( findCharCount('Hello World', 'l') );		// 3
+
+// str.replace('바꿀문자열', '바뀔문자열') : 치환
+var str = 'Hello World';
+console.log( str.replace('lo', 'la') ); 
+
+// 문자열 자르기: str.substring(시작idx, 마지막 직전idx), str.substr(시작idx, 갯수)
+var str = 'Hello World';
+console.log(
+	str.substring(0, 4),
+	str.substr(0, 4),
+	str.substring(3, 4),
+	str.substr(3, 4)
+);
+
+// 문자열을 규칙에 맞게 잘라서 배열로 만들기: str.split('자를 기준');
+var userStr = '홍길동, 홍길만, 홍길이, 홍길삼';
+var tel = '010-1111-2222'
+var users = userStr.split(', ');
+var tels = tel.split('-');
+console.log(users);
+console.log(tels);
+
+// 문자열을 소문자, 대문자로 바꾸기: toLowerCase(), toUpperCase()
+var file = '그림.JPG';
+var file2 = 'Hello World';
+var lowerFile = file.toLowerCase();
+var upperFile = file2.toUpperCase();
+console.log(lowerFile, upperFile);
+
+var allowExt = ['jpg', 'jpeg', 'gif', 'png', 'mp3', 'mp4'];
+
+// <input type="file">
+var upfile = '그림.내가그린.언제.Jpg'
+var ext = upfile.split('.').pop().toLowerCase()
+var isAllow = allowExt.indexOf(ext) > -1
+console.log(ext, isAllow);
+
+
+var arr = ['A'];
+arr.push('B');
+arr.push('C');
+console.log(arr);								// ['A', 'B', 'C']
+console.log( arr.pop(), arr );	// 'C', ['A', 'B']
+
+var search = '      My World  	   '.trim();
+console.log(search);
+
+console.log( 'Hello World'.charAt(3) ); // index번째 글자를 가져오고 싶을때
+
+var a = 'Hello';
+var b = 'World';
+var c = a.concat(b);
+// var c = a+b;
+console.log(c);
 </script>
