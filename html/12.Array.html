@@ -1,10 +1,10 @@
 <script>
 // push: arr.push('B'...) 			-> 배열의 맨 뒤에 요소 삽입
-// pop:	arr.pop()								-> 배열의 맨 뒤의 요소를 꺼냄(배열이 변경됨)
+// pop:	arr.pop()								-> 배열의 맨 뒤의 요소를 꺼냄(원본이 변경됨)
 // unshift: arr.unshift('B')		-> 배열의 맨 앞에 요소 삽입
-// shift: arr.shift()						-> 배열의 맨 앞의 요소를 꺼냄(배열이 변경됨)
-// splice:
-// slice:
+// shift: arr.shift()						-> 배열의 맨 앞의 요소를 꺼냄(원본이 변경됨)
+// splice: arr.splice(작업할idx, 꺼낼 갯수, 넣을 값)(원본이 변경됨)
+// slice: 원본이 변경x
 // concat:
 // join:
 // forEach:
@@ -29,4 +29,46 @@ var arr = ['A', 'B', 'C', 'D'];
 arr.unshift('E', 'F');
 console.log(arr);
 console.log(arr.shift(), arr);
+
+var arr = ['A', 'B', 'C', 'D'];
+var value = arr.splice(1, 2);
+console.log(value, arr);
+
+var arr = ['A', 'B', 'C', 'D'];
+var value = arr.splice(2, 0, 'Q', 'W');
+console.log(value, arr);
+
+var arr = ['A', 'B', 'C', 'D'];
+var value = arr.splice(2, 1, 'Q', 'W');
+console.log(value, arr);
+
+// slice(시작idx, 마지막직전idx)
+// slice(시작idx) -> 시작idx ~ 끝까지
+// slice() 				-> 0 ~ 끝까지
+var arr = ['A', 'B', 'C', 'D'];
+var arr2 = arr.slice(1); // substring()
+var arr3 = arr.slice(1, 2);
+var arr4 = arr.slice();
+console.log(arr, arr2, arr3, arr4);
+
+// JSON.parse(), JSON.stringify()
+var json = "{\"name\": \"hong kil dong\", \"age\": 25}";
+var js = {name: "hong kil dong", age: 25}
+console.log(json);
+console.log(  JSON.parse(json)  ); 		// json -> js
+console.log(  JSON.stringify(js)  );	// js -> json
+
+// 원본을 손상하지 않는다는 개념 -> deepcopy
+var users = [
+	{ id: 1, userid: 'hongkd', password: '1234', comment: '아버지를 아버지라...' },
+	{ id: 2, userid: 'booldook', password: '1245', comment: '다 수업시간에 했어요' },
+	{ id: 3, userid: 'hongks', password: '1278', comment: '아버지를 아버지라...' },
+]
+/* var users2 = users.slice();
+users2[1].userid = 'hongkm';
+console.log(users, users2); */
+
+var users3 = JSON.parse(JSON.stringify(users));
+users3[1].userid = 'hongkm';
+console.log(users, users3);
 </script>
