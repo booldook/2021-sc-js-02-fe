@@ -97,4 +97,99 @@ var arr2 = arr.slice();	// deepcopy
 console.log( arr, arr2 );
 console.log( arr == arr2 );		// false
 console.log( arr === arr2 );	// false
+
+// ES5 - for, for ~ in
+// ES6 - for~of
+var users = [
+	{ id: 1, username: '홍길동', kor: 46, eng: 75, age: 25 },
+	{ id: 2, username: '홍길순', kor: 86, eng: 55, age: 35 },
+	{ id: 3, username: '홍길만', kor: 76, eng: 35, age: 47 },
+	{ id: 4, username: '홍길룡', kor: 56, eng: 85, age: 37 },
+];
+// for(var i=0; i<users.length; i++) {
+// for(var i in users) {
+for(var v of users) { // ES6
+	// users[i].username = users[i].username.split('').join(' ')
+	v.username = v.username.split('').join(' ');
+}
+console.log(users);
+
+// forEach, filter, map , every(모든요소가 참), some(모든요소가 거짓)
+var users = [
+	{ id: 1, username: '홍길동', kor: 46, eng: 75, age: 25 },
+	{ id: 2, username: '홍길순', kor: 86, eng: 55, age: 35 },
+	{ id: 3, username: '홍길만', kor: 76, eng: 35, age: 47 },
+	{ id: 4, username: '홍길룡', kor: 56, eng: 85, age: 37 },
+];
+
+users.forEach(function(v, i, a) {
+	v.username = v.username.split('').join(' ');
+})
+console.log(users);
+
+// 데이터 필터링1
+var kor60 = [];
+users.forEach(function(v, i, a) {
+	if(v.kor >= 60) kor60.push(v);
+})
+console.log(kor60);
+
+// 데이터 필터링2 - 새로운 배열 리턴
+var kor60 = users.filter(function(v) {
+	return v.kor >= 60
+})
+console.log(kor60);
+
+// 데이터 변환 및 추출
+var usernames = users.map(function(v) {
+	return v.username
+})
+console.log(usernames);	// ["홍 길 동", "홍 길 순", "홍 길 만", "홍 길 룡"]
+
+var kors = users.map(function(v) {
+	return v.kor
+})
+console.log(kors);		// [46, 86, 76, 56]
+
+var totals = users.map(function(v) {
+	return v.kor + v.eng;
+})
+console.log(totals);	// [121, 141, 111, 141]
+
+
+// every: 모든요소가 조건에 참일때 참을 반환
+var age20 = users.every(function(v) {
+	return v.age >= 20;
+})
+console.log(age20);
+
+// some: 모든요소중 하나라도 조건이 참일때 참을 반환
+var kor60Under = users.some(function(v) {
+	return v.kor < 60;
+})
+console.log(kor60Under);
+
+// reduce
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var sum = 0;
+for(var v of arr) {
+	sum += v;
+}
+console.log(sum);
+var sum = arr.reduce(function(sum, current, i) {
+	return sum + current;
+}, 0)
+console.log(sum);
+
+
+var korSum = 0;
+for(var v of users) {
+	korSum += v.kor
+}
+console.log(korSum);
+
+var korSum = users.reduce(function(acc, curr) {
+	return acc + curr.kor
+}, 0)
+console.log(korSum);
 </script>
