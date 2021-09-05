@@ -1,3 +1,4 @@
+<script src="../js/moment.min.js"></script>
 <script>
 var str = 'ABCD';
 var str2 = new String('ABCD');
@@ -16,4 +17,11 @@ console.log(d.getDay()); 				// 0 (0 ~ 6) 요일
 console.log(d.getHours()); 			// 11
 console.log(d.getMinutes()); 		// 21
 console.log(d.getSeconds()); 		// 21
+
+var d = new Date('2020-09-11 11:15:15');
+d.setDate(21);
+console.log(d);
+
+var d = moment().format('YY월 M월 D일 hh시 m분 s초');
+console.log(d);
 </script>
