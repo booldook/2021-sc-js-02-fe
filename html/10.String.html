@@ -1,0 +1,55 @@
+<script>
+var a = 'ABCD'.length;
+console.log(a);
+
+var str = 'Hello World';
+var b = str.indexOf('He');			// 0
+var c = str.indexOf('he');			// -1
+var d = str.indexOf('lo');			// 3
+var e = str.indexOf('W');				// 6
+var f = str.indexOf('w');				// -1
+var g = str.indexOf('World');		// 6
+console.log(b, c, d, e, f, g)
+
+// <input type="text" name="userid">
+// var userid = document.f.userid.value
+var users = [
+	{ id: 1, userid: 'hongkd', password: '1234', comment: '아버지를 아버지라...' },
+	{ id: 2, userid: 'booldook', password: '1245', comment: '다 수업시간에 했어요' },
+	{ id: 3, userid: 'hongks', password: '1278', comment: '아버지를 아버지라...' },
+]
+
+// 일치하는 단일 검색
+var userid = 'hongkd';
+for(var i=0, isUser=false, user=null; i<users.length; i++) {
+	if(users[i].userid === userid) {
+		isUser = true;
+		user = users[i]
+		break;
+	}
+}
+console.log(isUser, user);
+
+// 포함하는 다중 검색
+var search = '아버지를';
+for(var i=0, isSearch=false, searchUser=[]; i<users.length; i++) {
+	if(users[i].comment.indexOf(search) > -1) {
+		isSearch = true;
+		searchUser.push(users[i])
+	}
+}
+console.log(isSearch, searchUser);
+
+// 몇개가 있는지?
+function findCharCount(str, char) {
+	var i = 0, count = 0;
+	// while(조건이 참을때까지) {
+	while(str.indexOf(char, i) > -1) {
+		i = str.indexOf(char, i) + 1;
+		count++;
+	}
+	return count;
+}
+
+console.log( findCharCount('Hello World', 'l') );		// 3
+</script>

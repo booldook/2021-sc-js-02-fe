@@ -1,0 +1,54 @@
+<script>
+/* 
+자바스크립트 내장객체
+Window(최상위 객체)
+window.document
+window.navigator
+
+- Number
+	- toString(), toFixed()
+- Math
+	- Math.abs(), Math.ceil(), Math.floor(), Math.round(), Math.random()
+- String
+	- substring(), substr(), indexOf() ...
+- Date
+	- new Date()
+	- getFullYear(), getMonth(), getDay(), getDate(), getHours(), getMinutes(), getSeconds()
+- Array
+	- new Array(), []
+	- push(), pop(), splice(), slice(), filter(), map(), reduce(), every(), some() ...
+- Object
+	- Object.assign()
+	- Object.entries()
+	- Object.keys()
+	- Object.values()
+- JSON
+	- JSON.stringify(), JSON.parse()
+ */
+ 
+
+/* 1. Number */
+var a = Number.parseInt(1234.56);				// 정수로 만든다
+var b = Number.parseInt('1234.56');
+var c = Number.parseFloat('1234.56');		// 실수로 만든다
+var d = Number.parseFloat('1234');
+var e = 1234.5678.toFixed(2);						// 수수점자리를 반올림하면서 맞춘다 -> 문자열로 변환된다.
+console.log(a, b, c, d, e);
+
+/* 2. Math */
+var f = Math.abs(-1234.56); 						// 1234.56	: 절대값
+var g = Math.ceil(1234.44); 						// 1235			: 무조건 올림
+var h = Math.floor(1234.54); 						// 1234			: 무조건 버림
+var i = Math.round(1234.54); 						// 1235			: 반올림
+console.log(f, g, h, i);
+
+var j = Math.random();									// 0 ~ 1보다 작은 난수 발생
+console.log(j);
+
+// 정수의 난수를 발생시킨다. (1 ~ 45)
+Math.floor(Math.random() * 45) + 1
+var random = function(start, count) {
+	return Math.floor(Math.random() * count) + start
+}
+console.log(random(1, 45))
+</script>

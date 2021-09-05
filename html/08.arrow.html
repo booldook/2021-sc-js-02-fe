@@ -1,0 +1,26 @@
+<script>
+function zp(n) {
+	return (n < 10) ? '0'+n : n;
+}
+
+var zp2 = function (n) {
+	return (n < 10) ? '0'+n : n;
+}
+
+// ES6
+var zp3 = (n) => {
+	return (n < 10) ? '0'+n : n;
+}
+
+var zp4 = n => {
+	return (n < 10) ? '0'+n : n;
+}
+
+var zp5 = n => (n < 10) ? '0'+n : n;
+
+console.log( zp(9) );
+console.log( zp2(9) );
+console.log( zp3(9) );
+console.log( zp4(9) );
+console.log( zp5(9) );
+</script>
