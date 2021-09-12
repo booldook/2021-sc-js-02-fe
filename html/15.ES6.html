@@ -1,0 +1,107 @@
+<style>
+.lists {max-width: 900px; margin: 100px auto;}
+.lists .list {display: flex; padding: .75em 0; border-bottom: 1px solid #999;}
+.lists .list div {padding: 0 .75em;}
+</style>
+<ul class="lists">
+	
+</ul>
+
+<script>
+// 구조분해할당(비 구조화 할당)
+
+const daily = {
+	code: 200,
+	main: {
+		temp: 25,
+		max_temp: 28,
+		min_temp: 23
+	},
+	weather: [
+		{
+			icon: '01d',
+			description: 'Clear Sky'
+		}
+	]
+}
+
+const description = daily.weather[0].description
+let { code } = daily
+let { temp, min_temp: minTemp, max_temp: maxTemp } = daily.main
+let { icon, description: desc } = daily.weather[0]
+console.log(temp, minTemp, maxTemp, icon, desc)
+
+const datas = [
+	[
+		{id: 1, name: '홍길동'},
+		{id: 2, name: '홍길순'},
+		{id: 3, name: '홍길만'},
+	],
+	[
+		{
+			fields: ['A', 'B']
+		}
+	]
+]
+
+const [[user1, user2, user3], [{fields: fd}]] = datas
+console.log(user1);
+console.log(user2);
+console.log(user3);
+console.log(fd[0]);
+console.log(fd[1]);
+
+const [users] = datas;
+console.log(...users);
+
+
+const comments = [
+	{ id: 1, title: '호부호형', writer: '홍길동', content: '아버지를 아버지라...' },
+	{ id: 2, title: '암행어사', writer: '변사또', content: '이몽룡 니가 내 상관...' },
+	{ id: 3, title: '임당수', writer: '심청이', content: '아버지 저는 갑니다...' },
+]
+
+let html = '';
+for(let v of comments) {
+	html += '<li class="list">';
+	html += '	<div class="no">'+v.id+'</div>';
+	html += '	<div class="title">'+v.title+'</div>';
+	html += '	<div class="writer">'+v.writer+'</div>';
+	html += '	<div class="content">'+v.content+'</div>';
+	html += '</li>';
+}
+// document.querySelector('.lists').innerHTML = html
+
+html = '';
+for(let { id, title, writer, content } of comments) {
+	html += `
+	<li class="list">
+		<div class="id">${id}</div>
+		<div class="title">${title}</div>
+		<div class="writer">${writer}</div>
+		<div class="content">${content}</div>
+	</li>`
+}
+document.querySelector('.lists').innerHTML = html
+
+
+// 자료구조 - Object, Array
+// Object
+const obj = {}
+obj.key = 'value';
+obj.key2 = 'value2';
+console.log( obj.key, obj.key2 );
+
+let key2 = obj.key2 ? obj.key2 : null;
+console.log(key2)
+
+
+
+// Map
+const map = new Map();
+map.set('key', 'value')
+map.set('key2', 'value2')
+console.log( map.get('key'), map.get('key2') );
+let key = map.has('key') ? map.get('key') : null;
+console.log(key);
+</script>
