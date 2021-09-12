@@ -90,10 +90,13 @@ document.querySelector('.lists').innerHTML = html
 const obj = {}
 obj.key = 'value';
 obj.key2 = 'value2';
-console.log( obj.key, obj.key2 );
-
+obj.key3 = 'value3';
+delete obj.key3;
+console.log( obj.key, obj['key2'], obj.key3 );
 let key2 = obj.key2 ? obj.key2 : null;
 console.log(key2)
+// for(let i in obj) { delete obj[i] }
+console.log(obj);
 
 
 
@@ -101,7 +104,64 @@ console.log(key2)
 const map = new Map();
 map.set('key', 'value')
 map.set('key2', 'value2')
-console.log( map.get('key'), map.get('key2') );
+map.set('key3', 'value3')
+map.delete('key3')
+console.log( map.get('key'), map.get('key2'), map.get('key3') );
 let key = map.has('key') ? map.get('key') : null;
-console.log(key);
+console.log(map.size);
+// map.clear()
+console.log(map)
+
+console.log( map.keys()			);		// key들이 배열로... [key, key2 ...]
+console.log( map.values()		);		// value들이 배열로... [value, value2 ...]
+console.log( map.entries()	);		// [[key, value], [key, value] ... ] 
+
+for(let [k, v] of map) {
+	console.log(k, v)
+}
+for(let v of map.values()) {
+	console.log(v)
+}
+for(let k of map.keys()) {
+	console.log(k)
+}
+
+console.log(Object.entries(obj));
+
+for(let [k, v] of Object.entries(obj)) { // 기존의 Literal 객체를 배열로 만들어 준다.
+	console.log(k, v)
+}
+
+for(let v of Object.values(obj)) { // 기존의 Literal 객체를 배열로 만들어 준다.
+	console.log(v)
+}
+
+for(let k of Object.keys(obj)) { // 기존의 Literal 객체를 배열로 만들어 준다.
+	console.log(k)
+}
+
+
+// Set - 중복 불가
+const set = new Set()
+set.add('A');
+set.add('B');
+set.add('B');
+set.add('B');
+set.add('B');
+set.add('B');
+set.add('C');
+set.add(obj);
+
+console.log(set)
+
+// 로또
+const cnt = 45;
+const lotto = []
+const random = cnt => Math.floor(Math.random() * cnt) + 1
+const todayNumbers = new Set()
+for(let i=1; i<=cnt; i++) { lotto.push(i) }
+while(todayNumbers.size < 6) {
+	todayNumbers.add(random(cnt))
+}
+console.log(todayNumbers);
 </script>
